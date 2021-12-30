@@ -1,0 +1,16 @@
+<h1>Product List</h1>
+<table>
+  <tr>
+    <th>Code:</th>
+    <th>Name:</th>
+    <th>Description:</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let product of products; index as i">
+    <td>{{product.code}}</td>
+    <td><a routerLink="/product/{{i}}" >{{product.name}}</a></td>
+    <td>{{product.description}}</td>
+    <td><a routerLink="/product/edit/{{i}}">Edit</a></td>
+    <td><a routerLink="/product/delete/{{i}}">Delete</a></td>
+  </tr>
+</table>

@@ -1,0 +1,19 @@
+<p>delete-product works!</p>
+<form (ngSubmit)="deleteProduct()">
+  <table *ngIf="product">
+    <tr>
+      <th>Code:</th>
+      <th>Name:</th>
+      <th>Description:</th>
+    </tr>
+    <tr>
+      <td>{{product.code}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.description}}</td>
+    </tr>
+  </table>
+  <p>Are you sure Delete?</p>
+  <button>Yes</button>
+  <a routerLink="/product/lít">No</a>
+</form>
+

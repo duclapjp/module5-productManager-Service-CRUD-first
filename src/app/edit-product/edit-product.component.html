@@ -1,0 +1,10 @@
+<p>edit-product works!</p>
+<form (ngSubmit)="editProduct(id)" >
+  <p>Id:</p>
+  <input type="text" [(ngModel)]="product.code" name="code">
+  <p>Name:</p>
+  <input type="text" [(ngModel)]="product.name" name="name">
+  <p>Description:</p>
+  <input type="text" [(ngModel)]="product.description" name="description">
+  <button>Edit</button>
+</form>

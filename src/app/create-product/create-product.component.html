@@ -1,0 +1,11 @@
+<p>create-product works!</p>
+<a routerLink="/list">list</a>
+<form (ngSubmit)="createNewProduct()" >
+  <p>Id:</p>
+  <input type="text" [(ngModel)]="product.code" name="code">
+  <p>Name:</p>
+  <input type="text" [(ngModel)]="product.name" name="name">
+  <p>Description:</p>
+  <input type="text" [(ngModel)]="product.description" name="description">
+  <button>Create</button>
+</form>
