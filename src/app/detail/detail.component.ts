@@ -11,26 +11,30 @@ import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 })
 export class DetailComponent implements OnInit {
   product: Product = {
+    id:0,
     code:'',
     name: '',
-    description: ''
+    description: '',
+    img:''
   };
   id: number=0;
 
   constructor(
     private prs: ProductService,
-    private route: Router,         //  là:   product/*
-    private activeRoute: ActivatedRoute        // là : product/id
+    private route: Router,
+    private activeRoute: ActivatedRoute
   )  {
     this.activeRoute.paramMap.subscribe(paraMap=>{
       this.id = Number(paraMap.get('id'));
-      this.product = prs.getProductById(this.id);
+      prs.getProductById(this.id).subscribe(product=>{
+        this.product = product
+      });
     })
   }
 
   ngOnInit(): void {
   }
   getProductById() {
-    return this.prs.getProductById(this.id)
+    return this.prs.getProductById(this.id).subscribe()
   }
 }

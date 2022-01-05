@@ -9,6 +9,11 @@ import {FormsModule} from "@angular/forms";
 import { DetailComponent } from './detail/detail.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
+import {HttpClientModule} from "@angular/common/http";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
+import { UploadfileComponent } from './uploadfile/uploadfile.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +22,16 @@ import { DeleteProductComponent } from './delete-product/delete-product.componen
     ListProductComponent,
     DetailComponent,
     EditProductComponent,
-    DeleteProductComponent
+    DeleteProductComponent,
+    UploadfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

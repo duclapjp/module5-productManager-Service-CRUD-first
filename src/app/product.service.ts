@@ -1,42 +1,34 @@
 import {Injectable} from '@angular/core';
 import {Product} from "./product";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: Product [] = [
-    {
-      code: 'c0921h1',
-      name: 'nokia',
-      description: 'hàng hot'
-    },
-    {
-      code: 'c0821h1',
-      name: 'samsung',
-      description: 'hàng đểu'
-    }
-  ]
 
-  constructor() {
+
+  constructor(private http: HttpClient) {
   }
 
-  getAllProduct() {
-    return this.products;
+  getAllProduct(): Observable<Product[]> {
+    return this.http.get<Product[]>('http://localhost:8080/product');
   }
 
-  createNewProduct(product: Product) {
-    this.products.push(product);
+  createNewProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>('http://localhost:8080/product/', product)
   }
 
-  // @ts-ignore
-  getProductById(index: number): Product {
-    return this.products[index];
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:8080/product/${id}`)
   }
-  editProduct(index: number, product: Product){
-    this.products[index] = product;
+
+  editProduct(id: number, product: Product): Observable<Product> {
+    return this.http.put<Product>(`http://localhost:8080/product/${id}`, product)
   }
-  deleteProductById(index: number) {
-    this.products.splice(index,1);
+
+  deleteProductById(id: number): Observable<Product> {
+    return this.http.delete<Product>(`http://localhost:8080/product/${id}`)
   }
 }

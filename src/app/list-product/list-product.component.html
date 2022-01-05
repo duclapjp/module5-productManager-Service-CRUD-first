@@ -4,13 +4,16 @@
     <th>Code:</th>
     <th>Name:</th>
     <th>Description:</th>
+    <th>Img:</th>
+    <th></th>
     <th></th>
   </tr>
-  <tr *ngFor="let product of products; index as i">
+  <tr *ngFor="let product of products">
     <td>{{product.code}}</td>
-    <td><a routerLink="/product/{{i}}" >{{product.name}}</a></td>
+    <td><a routerLink="/product/{{product.id}}" >{{product.name}}</a></td>
     <td>{{product.description}}</td>
-    <td><a routerLink="/product/edit/{{i}}">Edit</a></td>
-    <td><a routerLink="/product/delete/{{i}}">Delete</a></td>
+    <img [src]="product.img" >
+    <td><a routerLink="/product/edit/{{product.id}}">Edit</a></td>
+    <td><a routerLink="/product/delete/{{product.id}}">Delete</a></td>
   </tr>
 </table>

@@ -7,5 +7,8 @@
   <input type="text" [(ngModel)]="product.name" name="name">
   <p>Description:</p>
   <input type="text" [(ngModel)]="product.description" name="description">
+  <p>Image:</p>
+  <input type="file" (change)="showPreView($event)" #preview>
+  <img [src]="imgSrc" (click)="preview.click()" >
   <button>Create</button>
 </form>

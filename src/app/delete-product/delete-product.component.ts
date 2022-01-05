@@ -10,15 +10,19 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class DeleteProductComponent implements OnInit {
   product: Product={
+    id:0,
     code:'',
     name:'',
-    description:''
+    description:'',
+    img:''
   }
   id: number=0;
   constructor(private productService: ProductService, private activeRoute: ActivatedRoute,private route: Router) {
     this.activeRoute.paramMap.subscribe(paraMap=>{
       this.id = Number(paraMap.get('id'));
-      this.product = productService.getProductById(this.id);
+      productService.getProductById(this.id).subscribe(product=>{
+        this.product = product;
+      });
     })
   }
 
@@ -26,7 +30,9 @@ export class DeleteProductComponent implements OnInit {
   }
 
   deleteProduct() {
-    this.productService.deleteProductById(this.id);
-    this.route.navigate(['/list'])
+    this.productService.deleteProductById(this.id).subscribe(()=>{
+      this.route.navigateByUrl('/list')
+    });
+
   }
 }

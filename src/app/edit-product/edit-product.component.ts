@@ -10,17 +10,22 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class EditProductComponent implements OnInit {
   product: Product = {
-    code:'',
-    name:'',
-    description:''
+    id:0,
+    code: '',
+    name: '',
+    description: '',
+    img:''
   };
-  id:number=0;
+  id: number = 0;
+
   constructor(private productService: ProductService,
               private activateRoute: ActivatedRoute,
               private route: Router) {
-    this.activateRoute.paramMap.subscribe(paraMap=>{
+    this.activateRoute.paramMap.subscribe(paraMap => {
       this.id = Number(paraMap.get('id'));
-      this.product = this.productService.getProductById(this.id);
+      this.productService.getProductById(this.id).subscribe(product =>{
+        this.product = product;
+      });
     })
   }
 
@@ -28,7 +33,8 @@ export class EditProductComponent implements OnInit {
   }
 
   editProduct(id: number) {
-    this.productService.editProduct(id,this.product)
-    this.route.navigate(['/list'])
+    this.productService.editProduct(id, this.product).subscribe(()=>{
+      this.route.navigateByUrl('/list')
+    })
   }
 }
