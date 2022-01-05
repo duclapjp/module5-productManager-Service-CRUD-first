@@ -20,7 +20,7 @@ export class PageProductComponent implements OnInit {
     this.paginator.pageUser(request).subscribe(data=>{
       console.log(data);
       // @ts-ignore
-      this.product = data['content'];
+      this.products = data['content'];
       // @ts-ignore
       console.log(data['content'])
       // @ts-ignore
