@@ -1,0 +1,22 @@
+<h1>ProductList</h1>
+  <table>
+    <tr>
+      <th>Code:</th>
+      <th>Name:</th>
+      <th>Description:</th>
+      <th>Img:</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.code}}</td>
+      <td><a routerLink="/product/{{product.id}}" >{{product.name}}</a></td>
+      <td>{{product.description}}</td>
+      <img [src]="product.img" >
+      <td><a routerLink="/product/edit/{{product.id}}">Edit</a></td>
+      <td><a routerLink="/product/delete/{{product.id}}">Delete</a></td>
+    </tr>
+    <mat-paginator [pageSizeOptions]="[3,5,15]" [length]="totalElements" (page)="nextPage($event)"></mat-paginator>
+  </table>
+

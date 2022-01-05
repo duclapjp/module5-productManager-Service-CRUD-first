@@ -5,14 +5,19 @@ import {ListProductComponent} from "./list-product/list-product.component";
 import {DetailComponent} from "./detail/detail.component";
 import {EditProductComponent} from "./edit-product/edit-product.component";
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
+import {PageProductComponent} from "./page-product/page-product.component";
 
 const routes: Routes = [{
   path: 'create',
   component: CreateProductComponent
 },
+  // {
+  //   path: 'list',
+  //   component: ListProductComponent
+  // },
   {
     path: 'list',
-    component: ListProductComponent
+    component: PageProductComponent
   },
   {
     path:'product/:id',

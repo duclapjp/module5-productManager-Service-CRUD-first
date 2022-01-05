@@ -42,13 +42,12 @@ export class CreateProductComponent implements OnInit {
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize(() => {
         fileRef.getDownloadURL().subscribe(url => {
-          console.log(url)
           this.imgSrc = url;
+          this.product.img = this.imgSrc;
         });
       })).subscribe();
     }
   }
-
   showPreView(event: any) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();

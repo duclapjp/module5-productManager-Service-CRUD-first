@@ -14,6 +14,9 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import { UploadfileComponent } from './uploadfile/uploadfile.component';
+import { PageProductComponent } from './page-product/page-product.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { UploadfileComponent } from './uploadfile/uploadfile.component';
     DetailComponent,
     EditProductComponent,
     DeleteProductComponent,
-    UploadfileComponent
+    UploadfileComponent,
+    PageProductComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ import { UploadfileComponent } from './uploadfile/uploadfile.component';
     FormsModule,
     HttpClientModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

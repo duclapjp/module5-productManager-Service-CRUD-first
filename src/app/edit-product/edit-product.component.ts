@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from "../product";
 import {ProductService} from "../product.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-edit-product',
@@ -17,10 +19,12 @@ export class EditProductComponent implements OnInit {
     img:''
   };
   id: number = 0;
-
+  selectedImage = null;
+  imgSrc = "";
   constructor(private productService: ProductService,
               private activateRoute: ActivatedRoute,
-              private route: Router) {
+              private route: Router,
+              private storage: AngularFireStorage) {
     this.activateRoute.paramMap.subscribe(paraMap => {
       this.id = Number(paraMap.get('id'));
       this.productService.getProductById(this.id).subscribe(product =>{
@@ -36,5 +40,32 @@ export class EditProductComponent implements OnInit {
     this.productService.editProduct(id, this.product).subscribe(()=>{
       this.route.navigateByUrl('/list')
     })
+  }
+  uploadFile() {
+    if (this.selectedImage != null) {
+      // @ts-ignore
+      const filePath = `${this.selectedImage.name.split('.').splice(0, -1).join('.')}_${new Date().getTime()}`;
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize(() => {
+        fileRef.getDownloadURL().subscribe(url => {
+          this.imgSrc = url;
+          this.product.img = this.imgSrc;
+        });
+      })).subscribe();
+    }
+  }
+  showPreView(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imgSrc = event.target.result;
+        this.product.img = this.imgSrc;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage = event.target.files[0];
+      this.uploadFile();
+    } else {
+      this.selectedImage = null;
+    }
   }
 }
