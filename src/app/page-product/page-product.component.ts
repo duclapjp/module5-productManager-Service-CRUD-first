@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../interface/product";
 import {PaginatorService} from "../service/paginator.service";
 import {PageEvent} from "@angular/material/paginator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-page-product',
@@ -9,9 +10,11 @@ import {PageEvent} from "@angular/material/paginator";
   styleUrls: ['./page-product.component.css']
 })
 export class PageProductComponent implements OnInit {
+  keyword: string='';
   totalElements: number=0;
   products: Product [] = [];
-  constructor(private paginator: PaginatorService ) { }
+  constructor(private paginator: PaginatorService,
+              private route: Router) { }
 
   ngOnInit(): void {
     this.getListRequest({page:0, size:3})
@@ -37,4 +40,9 @@ export class PageProductComponent implements OnInit {
     request['size'] = event.pageSize.toString();
     this.getListRequest(request);
   }
+  search() {
+    console.log(this.keyword);
+    this.route.navigateByUrl('product/search/'+this.keyword)
+  }
+
 }

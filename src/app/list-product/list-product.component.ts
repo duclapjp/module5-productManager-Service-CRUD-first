@@ -10,7 +10,6 @@ import {Router} from "@angular/router";
 })
 export class ListProductComponent implements OnInit {
   products: Product [] = [];
-  keyword: string='';
   constructor(private productService: ProductService,
               private route: Router) {
   }
@@ -19,9 +18,5 @@ export class ListProductComponent implements OnInit {
     this.productService.getAllProduct().subscribe(data =>{
       this.products = data
     })
-  }
-
-  search() {
-    this.route.navigateByUrl('product/search/'+this.keyword)
   }
 }
