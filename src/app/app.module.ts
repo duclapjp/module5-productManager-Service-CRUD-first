@@ -17,6 +17,7 @@ import { UploadfileComponent } from './uploadfile/uploadfile.component';
 import { PageProductComponent } from './page-product/page-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { SearchProductComponent } from './search-product/search-product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     EditProductComponent,
     DeleteProductComponent,
     UploadfileComponent,
-    PageProductComponent
+    PageProductComponent,
+    SearchProductComponent
   ],
   imports: [
     BrowserModule,

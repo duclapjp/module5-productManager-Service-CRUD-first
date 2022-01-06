@@ -6,6 +6,7 @@ import {DetailComponent} from "./detail/detail.component";
 import {EditProductComponent} from "./edit-product/edit-product.component";
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
 import {PageProductComponent} from "./page-product/page-product.component";
+import {SearchProductComponent} from "./search-product/search-product.component";
 
 const routes: Routes = [{
   path: 'create',
@@ -30,6 +31,10 @@ const routes: Routes = [{
   {
     path:'product/delete/:id',
     component:DeleteProductComponent
+  },
+  {
+    path:'product/search/:code',
+    component:SearchProductComponent
   }
 ];
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from "../product.service";
-import {Product} from "../product";
+import {ProductService} from "../service/product.service";
+import {Product} from "../interface/product";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-product',
@@ -9,13 +10,18 @@ import {Product} from "../product";
 })
 export class ListProductComponent implements OnInit {
   products: Product [] = [];
-
-  constructor(private productService: ProductService) {
+  keyword: string='';
+  constructor(private productService: ProductService,
+              private route: Router) {
   }
 
   ngOnInit(): void {
     this.productService.getAllProduct().subscribe(data =>{
       this.products = data
     })
+  }
+
+  search() {
+    this.route.navigateByUrl('product/search/'+this.keyword)
   }
 }

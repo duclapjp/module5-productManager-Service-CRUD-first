@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../product";
-import {PaginatorService} from "../paginator.service";
+import {Product} from "../interface/product";
+import {PaginatorService} from "../service/paginator.service";
 import {PageEvent} from "@angular/material/paginator";
 
 @Component({

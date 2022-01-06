@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Product} from "./product";
+import {Product} from "../interface/product";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -30,5 +30,8 @@ export class ProductService {
 
   deleteProductById(id: number): Observable<Product> {
     return this.http.delete<Product>(`http://localhost:8080/product/${id}`)
+  }
+  getProductByCode(code: String): Observable<Product[]>{
+    return this.http.get<Product[]>(`http://localhost:8080/product/search/${code}`)
   }
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../product";
-import {ProductService} from "../product.service";
+import {Product} from "../interface/product";
+import {ProductService} from "../service/product.service";
 import {Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {finalize} from "rxjs";
