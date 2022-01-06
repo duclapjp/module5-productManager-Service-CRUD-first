@@ -21,15 +21,10 @@ export class PageProductComponent implements OnInit {
   }
   private getListRequest(request: any){
     this.paginator.pageUser(request).subscribe(data=>{
-      console.log(data);
       // @ts-ignore
       this.products = data['content'];
       // @ts-ignore
-      console.log(data['content'])
-      // @ts-ignore
       this.totalElements = data['totalElements'];
-      // @ts-ignore
-      console.log(data['totalElements'])
     })
   }
   nextPage(event: PageEvent){
@@ -41,7 +36,6 @@ export class PageProductComponent implements OnInit {
     this.getListRequest(request);
   }
   search() {
-    console.log(this.keyword);
     this.route.navigateByUrl('product/search/'+this.keyword)
   }
 
