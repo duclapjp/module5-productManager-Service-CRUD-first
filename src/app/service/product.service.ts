@@ -13,7 +13,7 @@ export class ProductService {
   }
 
   getAllProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:8080/product');
+    return this.http.get<Product[]>('http://localhost:8080/product/list');
   }
 
   createNewProduct(product: Product): Observable<Product> {

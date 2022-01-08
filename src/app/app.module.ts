@@ -18,6 +18,8 @@ import { PageProductComponent } from './page-product/page-product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { SearchProductComponent } from './search-product/search-product.component';
+import { ProductListComponent } from './socket-product/product-list/product-list.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SearchProductComponent } from './search-product/search-product.componen
     DeleteProductComponent,
     UploadfileComponent,
     PageProductComponent,
-    SearchProductComponent
+    SearchProductComponent,
+    ProductListComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

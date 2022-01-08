@@ -1,0 +1,34 @@
+<p>product-list-socket works!</p>
+<h1>Product List</h1>
+<table>
+  <tr>
+    <th>Code:</th>
+    <th>Name:</th>
+    <th>Description:</th>
+    <th>Img:</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let product of socketService.listProduct">
+    <td>{{product.code}}</td>
+    <td><a routerLink="/product/{{product.id}}" >{{product.name}}</a></td>
+    <td>{{product.description}}</td>
+    <img [src]="product.img" >
+    <td><a routerLink="/product/edit/{{product.id}}">Edit</a></td>
+    <td><a routerLink="/product/delete/{{product.id}}">Delete</a></td>
+  </tr>
+</table>
+<p>create-product works!</p>
+<a routerLink="/list">list</a>
+<form (ngSubmit)="createProduct()" >
+  <p>Code:</p>
+  <input type="text" [(ngModel)]="product.code" name="code">
+  <p>Name:</p>
+  <input type="text" [(ngModel)]="product.name" name="name">
+  <p>Description:</p>
+  <input type="text" [(ngModel)]="product.description" name="description">
+  <p>Image:</p>
+  <input name="img" type="file" (change)="showPreView($event)" #preview>
+  <img [src]="imgSrc" (click)="preview.click()" >
+  <button>Create</button>
+</form>

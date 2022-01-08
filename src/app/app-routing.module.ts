@@ -7,6 +7,8 @@ import {EditProductComponent} from "./edit-product/edit-product.component";
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
 import {PageProductComponent} from "./page-product/page-product.component";
 import {SearchProductComponent} from "./search-product/search-product.component";
+import {ProductListComponent} from "./socket-product/product-list/product-list.component";
+import {ChatComponent} from "./chat/chat.component";
 
 const routes: Routes = [{
   path: 'create',
@@ -35,7 +37,16 @@ const routes: Routes = [{
   {
     path:'product/search/:code',
     component:SearchProductComponent
+  },
+  {
+    path:'socket',
+    component:ProductListComponent
+  },
+  {
+    path:'chat',
+    component:ChatComponent
   }
+
 ];
 
 @NgModule({
