@@ -9,6 +9,9 @@ import {PageProductComponent} from "./page-product/page-product.component";
 import {SearchProductComponent} from "./search-product/search-product.component";
 import {ProductListComponent} from "./socket-product/product-list/product-list.component";
 import {ChatComponent} from "./chat/chat.component";
+import {MapComponent} from "./map/map.component";
+import {MessageChatDetailComponent} from "./message-chat/message-chat-detail/message-chat-detail.component";
+import {MessageChatComponent} from "./message-chat/message-chat.component";
 
 const routes: Routes = [{
   path: 'create',
@@ -45,8 +48,19 @@ const routes: Routes = [{
   {
     path:'chat',
     component:ChatComponent
+  },
+  {
+    path:'map',
+    component:MapComponent
+  },
+  {
+    path:'message-chat-detail/:id',
+    component:MessageChatDetailComponent
+  },
+  {
+    path:'message-chat',
+    component:MessageChatComponent
   }
-
 ];
 
 @NgModule({
